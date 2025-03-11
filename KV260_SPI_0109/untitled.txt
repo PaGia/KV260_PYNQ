@@ -1,0 +1,12 @@
+SPI_GPIO_wrapper.bit
+    25Mhz
+    8bit
+KV260_SPI_wrapper.bit
+    25Mhz
+    32bit
+kv_spi_6M_wrapper.bit
+    6.25Mhz
+    32bit
+SPI_RHD_wrapper.bit
+    25Mhz
+    16bit
