@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug 11 19:00:34 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug 15 17:08:48 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynquplus" BOARD="xilinx.com:kv260_som_som240_1_connector_kv260_carrier_som240_1_connector:part0:1.4" DEVICE="xck26" NAME="rhd_spi_ip_0806" PACKAGE="sfvc784" SPEEDGRADE="-2LV"/>
 
@@ -30,7 +30,7 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="28" FULLNAME="/axi_rhd_spi_master_0" HWVERSION="1.0" INSTANCE="axi_rhd_spi_master_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_rhd_spi_master" VLNV="user.org:user:axi_rhd_spi_master:1.0">
+    <MODULE COREREVISION="36" FULLNAME="/axi_rhd_spi_master_0" HWVERSION="1.0" INSTANCE="axi_rhd_spi_master_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_rhd_spi_master" VLNV="user.org:user:axi_rhd_spi_master:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
@@ -44,19 +44,24 @@
         <PARAMETER NAME="C_S00_AXI_HIGHADDR" VALUE="0xA000FFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="15" NAME="data_o_db" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_data_o_db">
+        <PORT DIR="O" NAME="debug_wire" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="debug_wire" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire">
+        <PORT DIR="O" LEFT="15" NAME="debug_wire2" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire2">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe5"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="debug_wire2" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire2">
+        <PORT DIR="O" NAME="debug_wire3" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire3">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_rhd_spi_master_0_interrupt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_ps_irq0"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="99999001" DIR="I" NAME="s00_axi_aclk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
@@ -5016,19 +5021,19 @@
             <CONNECTION INSTANCE="External_Ports" PORT="spi_miso_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_data_o_db">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_rhd_spi_master_0" PORT="data_o_db"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire">
+        <PORT DIR="I" LEFT="0" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_rhd_spi_master_0" PORT="debug_wire"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe6" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire2">
+        <PORT DIR="I" LEFT="15" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire2">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_rhd_spi_master_0" PORT="debug_wire2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe6" RIGHT="0" SIGIS="undef" SIGNAME="axi_rhd_spi_master_0_debug_wire3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_rhd_spi_master_0" PORT="debug_wire3"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7180,7 +7185,11 @@
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="99999001" DIR="O" NAME="pl_clk1" SIGIS="clk"/>
-        <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
+        <PORT DIR="I" LEFT="0" NAME="pl_ps_irq0" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_rhd_spi_master_0_interrupt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_rhd_spi_master_0" PORT="interrupt"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="pl_resetn0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="zynq_ultra_ps_e_0_pl_resetn0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps8_0_99M" PORT="ext_reset_in"/>
