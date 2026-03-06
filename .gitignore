@@ -1,1 +1,5 @@
 *.txt
+*.bin
+*.npy
+__pycache__/
+*.pyc
